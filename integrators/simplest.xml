@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="0.5.0">
+
+    <integrator type="simplest" id="integrator">
+        <spectrum name="color" value="0.8"/>
+        <integer name="shadingSamples" value="8"/>
+        <boolean name="hideEmitters" value="true"/>
+    </integrator>
+
+    <sensor type="perspective" id="camera">
+        <transform name="toWorld">
+            <lookAt origin="0, 3, -8" target="0, 0, 0" up="0, 1, 0"/>
+        </transform>
+
+        <sampler type="independent" id="sampler">
+            <integer name="sampleCount" value="1"/>
+        </sampler>
+
+        <film type="ldrfilm" id="film">
+            <string name="pixelFormat" value="rgba"/>
+            <integer name="width" value="512"/>
+            <integer name="height" value="400"/>
+            <boolean name="banner" value="false"/>
+            <rfilter type="gaussian"/>
+        </film>
+    </sensor>
+
+    <emitter type="directional" id="sun">
+        <vector name="direction" x="0" y="1" z="1"/>
+        <rgb name="irradiance" value=".75 .75 .75"/>
+    </emitter>
+
+    <bsdf type="diffuse" id="material">
+        <texture type="checkerboard" name="reflectance">
+            <float name="uvscale" value="6"/>
+        </texture>
+    </bsdf>
+
+    <shape type="cube" id="cube1">
+        <transform name="toWorld">
+            <scale z="2"/>
+            <rotate y="1" angle="45"/>
+            <translate x="0" y="0" z="1"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="cube" id="cube2">
+        <transform name="toWorld">
+            <scale z="2"/>
+            <rotate y="1" angle="-45"/>
+            <translate x="0" y="0" z="1"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+</scene>

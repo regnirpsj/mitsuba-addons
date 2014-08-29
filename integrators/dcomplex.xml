@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<scene version="0.5.0">
+
+    <integrator type="dcomplex" id="integrator">
+        <spectrum name="color" value="1.0"/>
+        <integer name="max_depth" value="-1"/>
+        <integer name="shadingSamples" value="8"/>
+        <boolean name="hideEmitters" value="true"/>
+    </integrator>
+
+    <sensor type="perspective" id="camera">
+        <transform name="toWorld">
+            <lookAt origin="0, 0, -5" target="0, 0, 0" up="0, 1, 0"/>
+        </transform>
+
+        <sampler type="independent" id="sampler">
+            <integer name="sampleCount" value="1"/>
+        </sampler>
+
+        <film type="ldrfilm" id="film">
+            <string name="pixelFormat" value="rgba"/>
+            <integer name="width" value="800"/>
+            <integer name="height" value="400"/>
+            <boolean name="banner" value="false"/>
+            <rfilter type="gaussian"/>
+        </film>
+    </sensor>
+
+    <emitter type="directional" id="sun1">
+        <vector name="direction" x="1" y="-0.5" z="1"/>
+        <rgb name="irradiance" value=".2 .2 .2"/>
+    </emitter>
+
+    <emitter type="directional" id="sun2">
+        <vector name="direction" x="-1" y="0.5" z="1"/>
+        <rgb name="irradiance" value=".2 .2 .2"/>
+    </emitter>
+
+    <bsdf type="diffuse" id="material">
+        <texture type="checkerboard" name="reflectance">
+            <float name="uvscale" value="6"/>
+        </texture>
+    </bsdf>
+
+    <shape type="sphere" id="s00">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="0"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s01">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="2"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s02">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="4"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s03">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="6"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s04">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="8"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s05">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="10"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s06">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="12"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s07">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="14"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s08">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="16"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s09">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="18"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s10">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="20"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s11">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="22"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s12">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="24"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s13">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="26"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s14">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="28"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s15">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="30"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s16">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="32"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s17">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="34"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s18">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="36"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s19">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="38"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+    <shape type="sphere" id="s20">
+        <transform name="toWorld">
+            <scale value="0.9"/>
+            <translate x="0" y="0" z="40"/>
+        </transform>
+        <ref id="material"/>
+    </shape>
+
+</scene>
