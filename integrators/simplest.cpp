@@ -31,9 +31,6 @@ namespace {
   // types, internal (class, enum, struct, union, typedef)
   
   // variables, internal
-
-  mitsuba::Float          dflt_color_values[SPECTRUM_SAMPLES] = { 0.2f, 0.5f, 0.2f };
-  mitsuba::Spectrum const dflt_color(dflt_color_values);
   
   // functions, internal
 
@@ -47,7 +44,7 @@ namespace mitsuba {
 
   simplest::simplest(Properties const& p)
     : SamplingIntegrator(p),
-      color_            (p.getSpectrum("color", dflt_color))
+      color_            (p.getSpectrum("color", Spectrum(1.0f)))
   {}
   
   simplest::simplest(Stream* s, InstanceManager* m)

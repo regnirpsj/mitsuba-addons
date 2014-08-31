@@ -31,9 +31,6 @@ namespace {
   // types, internal (class, enum, struct, union, typedef)
   
   // variables, internal
-
-  mitsuba::Float          dflt_color_values[SPECTRUM_SAMPLES] = { 0.2f, 0.5f, 0.2f };
-  mitsuba::Spectrum const dflt_color(dflt_color_values);
   
   // functions, internal
 
@@ -47,7 +44,7 @@ namespace mitsuba {
 
   dcomplex::dcomplex(Properties const& p)
     : SamplingIntegrator(p),
-      color_            (p.getSpectrum("color", dflt_color)),
+      color_            (p.getSpectrum("color",      Spectrum(1.0f))),
       max_depth_        (p.getInteger ("max_depth", -1))
   {}
   
@@ -66,27 +63,19 @@ namespace mitsuba {
   }
   
   /* virtual */ Spectrum
-  dcomplex::Li(RayDifferential const& a, RadianceQueryRecord& b) const
+  dcomplex::Li(RayDifferential const& r, RadianceQueryRecord& rec) const
   {
-    Spectrum             result(1.0f);
-    unsigned             depth (0);
-    RadianceQueryRecord& rec   (b);
-
     // primary intersection
-    rec.rayIntersect(a);
+    rec.rayIntersect(r);
     
     while (rec.its.isValid() && ((rec.depth <= max_depth_) || (0 > max_depth_))) {
-      ++depth;
-
+      ++rec.depth;
+      
       // ray recursion
-      rec.scene->rayIntersect(Ray(rec.its.p, a.d, a.time), rec.its);
+      rec.scene->rayIntersect(Ray(rec.its.p, r.d, r.time), rec.its);
     }
     
-    if (0 < depth) {
-      result = Spectrum((depth / Float(depth + 1)) - 0.45) * color_;
-    }
-    
-    return result;
+    return Spectrum(rec.depth) * color_;
   }
   
   MTS_IMPLEMENT_CLASS_S(dcomplex, false, SamplingIntegrator);

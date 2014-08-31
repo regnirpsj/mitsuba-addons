@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--
+<documentation version="2.0.2">
+    <plugin type="integrator" name="dcomplex" show="true" readableName="Depth Complexity"
+className="dcomplex" extends="SampleIntegrator">
+        <descr>A simple depth-complexity visualization integrator.</descr>
+        <param name="color" readableName="Color" type="spectrum" default="1">
+            Specifies the final color to be mulitplied with the depth complexity.
+        </param>
+        <param name="max_depth" readableName="Maximum depth" type="integer" default="-1">
+            Specifies the longest path depth in the generated output image (where <tt>-1</tt>
+            corresponds to ~H~^). A value of 1 will only render directly visible light sources.
+            2 will lead to single-bounce (direct-only) illumination, and so on.
+        </param>
+    </plugin>
+</documentation>
+-->
+
 <scene version="0.5.0">
 
-    <integrator type="dcomplex" id="integrator">
-        <spectrum name="color" value="1.0"/>
-        <integer name="max_depth" value="-1"/>
-        <integer name="shadingSamples" value="8"/>
-        <boolean name="hideEmitters" value="true"/>
-    </integrator>
+    <integrator type="dcomplex" id="integrator"/>
 
     <sensor type="perspective" id="camera">
         <transform name="toWorld">
@@ -23,6 +35,7 @@
             <integer name="width" value="800"/>
             <integer name="height" value="400"/>
             <boolean name="banner" value="false"/>
+            <string name="tonemapMethod" value="reinhard"/>
             <rfilter type="gaussian"/>
         </film>
     </sensor>
